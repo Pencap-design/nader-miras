@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#170407">
+  <meta name="color-scheme" content="dark">
+  <title>نادر · رونمایی کالکشن میراث</title>
+  <meta name="description" content="دعوت‌نامه‌ای برای شما — رونمایی کالکشن میراث، نادر">
+  <meta property="og:title" content="نادر · رونمایی کالکشن میراث">
+  <meta property="og:description" content="دعوت‌نامه‌ای برای شما">
+  <link rel="preload" href="assets/fonts/Doran-Light.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/Doran-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/Cormorant-Light-subset.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/img/logo.webp" as="image">
+  <link rel="icon" href="assets/img/logo.webp" type="image/webp">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/config.js" defer></script>
+  <script src="js/motifs.js" defer></script>
+  <script src="js/sound.js" defer></script>
+  <script src="js/dust.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <div class="atmosphere" aria-hidden="true">
+    <div class="atmosphere__texture"></div>
+    <div class="atmosphere__vignette"></div>
+  </div>
+  <canvas class="dust" aria-hidden="true"></canvas>
+
+  <main class="stage" id="stage" data-scene="seal">
+
+    <!-- 01 · The sealed invitation -->
+    <section class="scene scene--seal" data-name="seal" aria-label="مهر">
+      <p class="seal__invite" data-copy="invitation"></p>
+
+      <button class="seal" type="button" data-seal>
+        <span class="seal__body seal__body--whole" data-seal-face></span>
+        <span class="seal__body seal__body--half seal__body--r" data-seal-face aria-hidden="true"></span>
+        <span class="seal__body seal__body--half seal__body--l" data-seal-face aria-hidden="true"></span>
+        <svg class="seal__crack" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <polyline data-crack pathLength="1" fill="none"/>
+          <polyline data-crack-branch-a pathLength="1" fill="none"/>
+          <polyline data-crack-branch-b pathLength="1" fill="none"/>
+        </svg>
+      </button>
+
+      <p class="seal__cta">
+        <span class="seal__cta-line" aria-hidden="true"></span>
+        <span data-copy="breakSeal"></span>
+      </p>
+    </section>
+
+    <!-- 02 · The reveal -->
+    <section class="scene scene--reveal" data-name="reveal" aria-label="میراث">
+      <div class="relief" aria-hidden="true" data-relief></div>
+
+      <div class="reveal">
+        <div class="reveal__intro">
+          <h1 class="reveal__brand" data-copy="event.brand"></h1>
+          <p class="reveal__lines" data-lines="inviteLines"></p>
+        </div>
+        <span class="reveal__divider" aria-hidden="true"></span>
+        <div class="reveal__hero">
+          <p class="reveal__unveil" data-copy="unveil"></p>
+          <h2 class="reveal__miras gold-text" data-copy="event.collection"></h2>
+          <p class="reveal__latin" lang="en" dir="ltr">
+            <span class="reveal__latin-rule" aria-hidden="true"></span>
+            <span data-copy="event.collectionLatin"></span>
+            <span class="reveal__latin-rule" aria-hidden="true"></span>
+          </p>
+        </div>
+      </div>
+
+      <div class="doors" aria-hidden="true">
+        <div class="door door--r"><span class="door__edge"></span></div>
+        <div class="door door--l"><span class="door__edge"></span></div>
+        <span class="doors__seam"></span>
+      </div>
+    </section>
+
+    <!-- 03 · Event details -->
+    <section class="scene scene--details" data-name="details" aria-label="جزئیات مراسم">
+      <article class="card">
+        <svg class="card__frame" aria-hidden="true" data-frame></svg>
+        <p class="card__title" data-copy="event.title"></p>
+
+        <div class="card__item card__item--date">
+          <span class="glyph" data-glyph="rosette"></span>
+          <p class="card__date" data-copy="event.date"></p>
+        </div>
+        <span class="rule" aria-hidden="true"></span>
+        <div class="card__item card__item--time">
+          <span class="glyph" data-glyph="dusk"></span>
+          <p class="card__time" data-copy="event.time"></p>
+        </div>
+        <span class="rule" aria-hidden="true"></span>
+        <div class="card__item card__item--place">
+          <span class="glyph" data-glyph="gate"></span>
+          <address class="card__address" data-lines="event.address"></address>
+        </div>
+      </article>
+    </section>
+
+    <!-- 04 · Final moment -->
+    <section class="scene scene--final" data-name="final" aria-label="تأیید حضور">
+      <div class="final">
+        <p class="final__line final__line--1" data-copy="closingLine"></p>
+        <p class="final__line final__line--2" data-copy="closingWelcome"></p>
+        <div class="final__logo logo" data-logo></div>
+        <div class="final__actions">
+          <a class="cta cta--primary" data-rsvp href="#" role="button">
+            <svg class="cta__trace" aria-hidden="true"><rect pathLength="1" x="0.5" y="0.5" rx="1"/></svg>
+            <span class="cta__label" data-copy="rsvp"></span>
+          </a>
+          <a class="cta cta--secondary" data-route target="_blank" rel="noopener">
+            <span data-copy="route"></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <button class="advance" type="button" data-advance>
+      <span class="advance__line" aria-hidden="true"></span>
+      <span class="advance__label" data-copy="continue"></span>
+    </button>
+  </main>
+
+  <button class="sound" type="button" data-sound aria-pressed="false">
+    <span class="sound__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span class="sr-only" data-sound-label></span>
+  </button>
+</body>
+</html>
