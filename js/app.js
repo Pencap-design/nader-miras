@@ -175,12 +175,25 @@
     }
   };
 
+  /* ---------- Sound button state ---------- */
+  let soundTouched = false;
+  function syncSound() {
+    const sb = $("[data-sound]"), sl = $("[data-sound-label]");
+    sb.setAttribute("aria-pressed", String(S.enabled));
+    sb.classList.toggle("is-on", S.enabled);
+    sl.textContent = S.enabled ? C.copy.soundOff : C.copy.soundOn;
+    sb.setAttribute("aria-label", sl.textContent);
+  }
+
   /* ---------- Seal interaction ---------- */
   async function breakSeal() {
     const scene = $(".scene--seal");
     if (busy || current !== "seal" || !scene.classList.contains("is-ready")) return;
     busy = true;
     const seal = $(".seal");
+    // Breaking the seal is the guest's gesture — the music begins with it,
+    // unless they already chose silence with the sound button.
+    if (!soundTouched && !S.enabled) { S.setEnabled(true, { quiet: true }); syncSound(); }
     S.seal();
     if (navigator.vibrate) navigator.vibrate([10, 60, 18]);
     seal.classList.add("is-cracking");
@@ -251,14 +264,12 @@
     });
 
     // sound toggle
-    const sb = $("[data-sound]"), sl = $("[data-sound-label]");
-    const syncSound = () => {
-      sb.setAttribute("aria-pressed", String(S.enabled));
-      sb.classList.toggle("is-on", S.enabled);
-      sl.textContent = S.enabled ? C.copy.soundOff : C.copy.soundOn;
-      sb.setAttribute("aria-label", sl.textContent);
-    };
-    sb.addEventListener("click", (e) => { e.stopPropagation(); S.setEnabled(!S.enabled); syncSound(); });
+    $("[data-sound]").addEventListener("click", (e) => {
+      e.stopPropagation();
+      S.setEnabled(!S.enabled);
+      soundTouched = true; // from now on the guest's choice wins
+      syncSound();
+    });
     syncSound();
 
     addEventListener("resize", () => { if (current === "details") sizeFrame(); sizeTrace(); });

@@ -219,11 +219,11 @@
     n.connect(bp).connect(ng).connect(bus); n.start();
   }
 
-  function schedule(on) {
+  function schedule(on, firstPhraseIn = 1400) {
     clearTimeout(melodyTimer); clearTimeout(padTimer);
     if (!on) return;
     nextPad();
-    melodyTimer = setTimeout(nextPhrase, 1400);
+    melodyTimer = setTimeout(nextPhrase, firstPhraseIn);
   }
 
   /* ---------- ceremonial cues ---------- */
@@ -283,7 +283,7 @@
     [0, 1.5, 3, 7, 12].forEach((s, i) => pluck(hz(s), t + i * 0.16, 0.12, 3));
   }
 
-  function setEnabled(on) {
+  function setEnabled(on, { quiet = false } = {}) {
     init();
     if (!ctx) return false;
     if (on) unlockIOS();
@@ -293,9 +293,9 @@
     const t = ctx.currentTime;
     master.gain.cancelScheduledValues(t);
     master.gain.setValueAtTime(master.gain.value, t);
-    master.gain.linearRampToValueAtTime(on ? 1 : 0, t + (on ? 0.4 : 0.6));
-    schedule(on);
-    if (on) setTimeout(flourish, 60); // immediate, gentle confirmation
+    master.gain.linearRampToValueAtTime(on ? 1 : 0, t + (on ? (quiet ? 0.01 : 0.4) : 0.6));
+    schedule(on, quiet ? 3200 : 1400); // after the seal, let the melody enter as the doors open
+    if (on && !quiet) setTimeout(flourish, 60); // immediate, gentle confirmation
     return true;
   }
 
