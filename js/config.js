@@ -19,7 +19,7 @@ window.NADER_CONFIG = {
 
   copy: {
     invitation: "دعوت‌نامه‌ای برای شما",
-    breakSeal: "مُهر نادر را بشکنید",
+    breakSeal: "مُهر را بگشایید",
     inviteLines: [
       "شما را به روایت تازه‌ای",
       "از میراث ایران دعوت می‌کند."
