@@ -3,3 +3,5 @@
 assets/img/reference-cover.webp
 print/*.pdf
 print/preview-*.png
+brochure/*.pdf
+brochure/preview-*.png
