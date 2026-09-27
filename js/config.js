@@ -5,6 +5,7 @@
 window.NADER_CONFIG = {
   event: {
     brand: "نادر",
+    brandHouse: "طلا و جواهر",   // shown before the brand on the printed card
     collection: "میراث",
     collectionLatin: "MIRAS",
     title: "رونمایی کالکشن میراث",
