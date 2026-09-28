@@ -17,7 +17,7 @@
   @font-face { font-family: "Doran"; src: url("../assets/fonts/Doran-Light.woff2") format("woff2"); font-weight: 300; }
   @font-face { font-family: "Doran"; src: url("../assets/fonts/Doran-Regular.woff2") format("woff2"); font-weight: 400; }
   @font-face { font-family: "Doran"; src: url("../assets/fonts/Doran-Medium.woff2") format("woff2"); font-weight: 500; }
-  @font-face { font-family: "Cormorant"; src: url("../assets/fonts/Cormorant-Light-subset.woff2") format("woff2"); font-weight: 300; }
+  @font-face { font-family: "Cormorant"; src: url("../assets/fonts/Cormorant-Medium-subset.woff2") format("woff2"); font-weight: 500; }
 
   @page { size: 303mm 216mm; margin: 0; }
 
@@ -36,7 +36,7 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   address { font-style: normal; }
   html, body { background: #6d6d6d; }
-  body { font-family: "Doran", sans-serif; font-weight: 300; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family: "Doran", sans-serif; font-weight: 400; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   @media screen { body { display: grid; gap: 12mm; padding: 12mm; justify-content: center; } }
 
   .sheet { position: relative; width: 303mm; height: 216mm; overflow: hidden; break-after: page; }
@@ -50,13 +50,13 @@
   .grain svg { display: block; width: 100%; height: 100%; }
 
   /* ---------- small shared pieces ---------- */
-  .latin { font-family: "Cormorant", serif; font-weight: 300; direction: ltr; letter-spacing: .5em; }
+  .latin { font-family: "Cormorant", serif; font-weight: 500; direction: ltr; letter-spacing: .5em; }
   .tracked { display: flex; align-items: center; justify-content: center; gap: 3.5mm; }
-  .tracked i { display: block; width: 8mm; height: .2mm; background: linear-gradient(90deg, transparent, currentColor); }
+  .tracked i { display: block; width: 8mm; height: .3mm; background: linear-gradient(90deg, transparent, currentColor); }
   .tracked i:last-child { background: linear-gradient(90deg, currentColor, transparent); }
   .tracked span { margin-right: -.5em; }
-  .lozenge-rule { position: relative; height: .2mm; background: linear-gradient(90deg, transparent, var(--gold-soft), transparent); }
-  .lozenge-rule::after { content: ""; position: absolute; left: 50%; top: 50%; width: 1.5mm; height: 1.5mm; translate: -50% -50%; rotate: 45deg; border: .2mm solid var(--gold); background: inherit; background: var(--cream); }
+  .lozenge-rule { position: relative; height: .3mm; background: linear-gradient(90deg, transparent, var(--gold-soft), transparent); }
+  .lozenge-rule::after { content: ""; position: absolute; left: 50%; top: 50%; width: 1.5mm; height: 1.5mm; translate: -50% -50%; rotate: 45deg; border: .3mm solid var(--gold); background: inherit; background: var(--cream); }
   .leather .lozenge-rule::after { background: #3d0c15; }
   .glyph { display: block; width: 5.5mm; height: 5.5mm; color: var(--gold); }
   .glyph svg { width: 100%; height: 100%; display: block; }
@@ -66,14 +66,15 @@
   .frame { position: absolute; pointer-events: none; }
   .frame svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
   .frame rect, .frame path { fill: none; vector-effect: non-scaling-stroke; }
-  .leather .frame .o { stroke: rgba(220, 194, 143, .55); stroke-width: .9; }
-  .leather .frame .i { stroke: rgba(220, 194, 143, .25); stroke-width: .6; }
-  .paper .frame .o { stroke: rgba(138, 106, 59, .5); stroke-width: .8; }
-  .paper .frame .i { stroke: rgba(138, 106, 59, .22); stroke-width: .55; }
+  .leather .frame .o { stroke: rgba(220, 194, 143, .55); stroke-width: 1.4; }
+  .leather .frame .i { stroke: rgba(220, 194, 143, .25); stroke-width: 1.0; }
+  .paper .frame .o { stroke: rgba(138, 106, 59, .5); stroke-width: 1.3; }
+  .paper .frame .i { stroke: rgba(138, 106, 59, .22); stroke-width: 1.0; }
   .corner { position: absolute; width: 9mm; height: 9mm; background: url("img/corner.jpg") center / cover; box-shadow: 0 .4mm 1mm rgba(0,0,0,.35); }
 
   /* verse cartouche: two hemistichs side by side, as poetry is set in Persian books */
-  .verse { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 2.5mm; font-size: 8.6pt; line-height: 1.6; color: var(--wine); padding: 2.6mm 0; border-top: .2mm solid var(--gold-soft); border-bottom: .2mm solid var(--gold-soft); }
+  .verse { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 2.5mm; font-size: 9.3pt; line-height: 1.6; color: var(--wine); padding: 2.6mm 0; border-top: .3mm solid var(--gold-soft); border-bottom: .3mm solid var(--gold-soft); }
+  .verse span { white-space: nowrap; }
   .verse span:first-child { text-align: left; }   /* right-hand misra, hugging the centre */
   .verse span:last-child { text-align: right; }   /* left-hand misra */
   .verse i { width: 1.4mm; height: 1.4mm; rotate: 45deg; background: var(--gold); }
@@ -86,10 +87,10 @@
   .cover-body { position: absolute; left: var(--b); width: 100mm; top: 0; bottom: 0; display: grid; justify-items: center; align-content: center; text-align: center; padding-bottom: 6mm; }
   .cover-logo { width: 36mm; filter: sepia(.12) saturate(.85) brightness(.96) drop-shadow(0 .5mm .8mm rgba(0,0,0,.45)); }
   .cover-house { margin-top: 7mm; font-size: 10pt; color: #cdb07a; }
-  .cover-rule { width: .2mm; height: 11mm; margin: 5mm 0 3mm; background: linear-gradient(to bottom, transparent, var(--gold), transparent); }
-  .cover-title { font-weight: 400; font-size: 54pt; line-height: 1.15; color: #d7bc86; }
-  .cover-latin { font-size: 8pt; color: var(--gold); margin-top: 1mm; }
-  .cover-line { position: absolute; bottom: calc(var(--b) + 17mm); left: var(--b); width: 100mm; text-align: center; font-size: 8.5pt; color: rgba(220, 194, 143, .8); }
+  .cover-rule { width: .3mm; height: 11mm; margin: 5mm 0 3mm; background: linear-gradient(to bottom, transparent, var(--gold), transparent); }
+  .cover-title { font-weight: 500; font-size: 54pt; line-height: 1.15; color: #d7bc86; }
+  .cover-latin { font-size: 8.8pt; color: var(--gold); margin-top: 1mm; }
+  .cover-line { position: absolute; bottom: calc(var(--b) + 17mm); left: var(--b); width: 100mm; text-align: center; font-size: 9.2pt; color: #d6bb88; }
 
   /* =========================================================
      OUTSIDE · back
@@ -98,20 +99,20 @@
   .p-back::before { content: ""; position: absolute; inset: 0; background: var(--rosette-gold) center 44% / 88mm no-repeat; opacity: .07; }
   .back-body { position: absolute; inset: calc(var(--b) + 16mm) 12mm calc(var(--b) + 14mm); display: grid; grid-template-rows: auto 1fr auto; justify-items: center; text-align: center; }
   .back-logo { width: 14mm; filter: sepia(.12) saturate(.85) brightness(.96); }
-  .back-house { font-size: 9.5pt; margin-top: 3mm; color: #cdb07a; }
+  .back-house { font-size: 9.8pt; margin-top: 3mm; color: #cdb07a; }
   .back-event { align-self: center; display: grid; justify-items: center; gap: 3.2mm; width: 100%; }
   .back-eyebrow { font-size: 10.5pt; color: var(--gold-light); }
   .back-event .lozenge-rule { width: 30mm; margin: 1mm 0; }
-  .back-big { font-size: 20pt; line-height: 1.25; font-weight: 300; color: #efe0c0; }
+  .back-big { font-size: 20pt; line-height: 1.25; font-weight: 400; color: #efe0c0; }
   .back-mid { font-size: 13pt; color: #e3d0aa; }
-  .back-addr { font-size: 9pt; line-height: 1.9; color: #d8c49e; }
+  .back-addr { font-size: 9.5pt; line-height: 1.9; color: #d8c49e; }
   .back-addr span { display: block; }
   .back-addr span:last-child { color: var(--gold-light); font-size: 10pt; }
   .back-qr { display: grid; grid-template-columns: auto auto; align-items: center; gap: 3.5mm; }
   .qr-plate { width: 18mm; height: 18mm; padding: 1.5mm; background: var(--cream); box-shadow: 0 0 0 .25mm var(--gold), 0 0 0 .9mm #3d0c15, 0 0 0 1.1mm rgba(220,194,143,.5); }
   .qr-plate img { width: 100%; height: 100%; display: block; }
-  .qr-cap { font-size: 7.5pt; line-height: 1.85; color: #d3bf98; text-align: right; }
-  .qr-cap b { display: block; font-weight: 400; font-size: 8.5pt; color: var(--gold-light); }
+  .qr-cap { font-size: 8.5pt; line-height: 1.85; color: #d3bf98; text-align: right; }
+  .qr-cap b { display: block; font-weight: 500; font-size: 9.2pt; color: var(--gold-light); }
 
   /* =========================================================
      OUTSIDE · inner flap (first thing seen on opening)
@@ -120,17 +121,17 @@
   .p-flap .frame { left: 6mm; right: calc(var(--b) + 6mm); top: calc(var(--b) + 6mm); bottom: calc(var(--b) + 6mm); }
   .p-flap::before { content: ""; position: absolute; inset: 0; background: var(--rosette-ink) 50% 30% / 80mm no-repeat; opacity: .05; }
   .flap-body { position: absolute; left: 13mm; right: calc(var(--b) + 13mm); top: calc(var(--b) + 19mm); bottom: calc(var(--b) + 16mm); display: grid; align-content: center; gap: 9mm; text-align: center; justify-items: center; }
-  .flap-eyebrow { font-size: 9.5pt; color: var(--gold-deep); }
-  .flap-title { font-weight: 400; font-size: 21pt; line-height: 1.35; color: var(--wine); margin-top: 1mm; }
-  .flap-text { font-size: 9.2pt; line-height: 2.05; text-align: justify; text-align-last: center; color: var(--ink); margin-top: 5mm; }
-  .flap-body .verse { width: 100%; }
-  .flap-poet { font-size: 7.5pt; color: var(--gold-deep); margin-top: 1.5mm; }
+  .flap-eyebrow { font-size: 9.8pt; color: var(--gold-deep); }
+  .flap-title { font-weight: 500; font-size: 21pt; line-height: 1.35; color: var(--wine); margin-top: 1mm; }
+  .flap-text { font-size: 9.6pt; line-height: 2.05; text-align: justify; text-align-last: center; color: var(--ink); margin-top: 5mm; }
+  .flap-body .verse { width: 100%; font-size: 8.8pt; gap: 2mm; }
+  .flap-poet { font-size: 8.5pt; color: var(--gold-deep); margin-top: 1.5mm; }
   .index { width: 100%; display: grid; gap: 2.6mm; }
-  .index li { list-style: none; display: grid; grid-template-columns: auto auto 1fr auto; align-items: baseline; gap: 2mm; font-size: 9pt; }
+  .index li { list-style: none; display: grid; grid-template-columns: auto auto 1fr auto; align-items: baseline; gap: 2mm; font-size: 9.5pt; }
   .index .num { color: var(--gold-deep); width: 4mm; }
-  .index .nm { font-weight: 400; color: var(--wine); }
-  .index .dots { border-bottom: .2mm dotted rgba(138,106,59,.55); transform: translateY(-1mm); }
-  .index .st { color: #6b4a3a; font-size: 8.2pt; }
+  .index .nm { font-weight: 500; color: var(--wine); }
+  .index .dots { border-bottom: .3mm dotted rgba(138,106,59,.55); transform: translateY(-1mm); }
+  .index .st { color: #6b4a3a; font-size: 9pt; }
 
   /* =========================================================
      INSIDE · three pieces
@@ -142,29 +143,32 @@
   .inside-band { position: absolute; left: 0; right: 0; bottom: 0; height: calc(var(--b) + 11mm); background: linear-gradient(#4a0f1a, #33080f); }
   .inside-band svg { position: absolute; left: 0; right: 0; top: 2.2mm; height: 5mm; width: 100%; }
   .inside-band::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: .5mm; background: linear-gradient(90deg, #8a6a3b, #dcc28f 50%, #8a6a3b); }
-  .inside-top { position: absolute; left: 0; right: 0; top: calc(var(--b) + 7mm); height: .2mm; background: linear-gradient(90deg, transparent 2%, var(--gold-soft) 12%, var(--gold-soft) 88%, transparent 98%); }
+  .inside-top { position: absolute; left: 0; right: 0; top: calc(var(--b) + 7mm); height: .3mm; background: linear-gradient(90deg, transparent 2%, var(--gold-soft) 12%, var(--gold-soft) 88%, transparent 98%); }
 
-  .prod { position: absolute; top: calc(var(--b) + 12mm); bottom: calc(var(--b) + 16mm); display: grid; grid-template-rows: auto auto auto 1fr auto auto; justify-items: center; text-align: center; }
-  .pos-3 .prod { left: calc(var(--b) + 8mm); right: 8mm; }
-  .pos-2 .prod { left: 8mm; right: 8mm; }
-  .pos-1 .prod { left: 8mm; right: calc(var(--b) + 8mm); }
+  .prod { position: absolute; top: calc(var(--b) + 12mm); bottom: calc(var(--b) + 16mm); display: grid; grid-template-rows: auto auto auto auto 1fr auto; justify-items: center; text-align: center; }
+  .pos-3 .prod { left: calc(var(--b) + 7.5mm); right: 7.5mm; }
+  .pos-2 .prod { left: 7.5mm; right: 7.5mm; }
+  .pos-1 .prod { left: 7.5mm; right: calc(var(--b) + 7.5mm); }
 
-  .prod-num { width: 7mm; height: 7mm; border-radius: 50%; display: grid; place-items: center; font-size: 8.5pt; color: var(--gold-deep); box-shadow: inset 0 0 0 .2mm var(--gold); }
-  .prod-name { font-weight: 400; font-size: 23pt; line-height: 1.35; color: var(--wine); margin-top: 1.5mm; }
-  .prod-latin { font-size: 6.6pt; color: var(--gold-deep); }
-  .prod-figure { position: relative; width: 100%; height: 66mm; margin: 3mm 0 2mm; display: grid; place-items: center; }
+  .prod-num { width: 7mm; height: 7mm; border-radius: 50%; display: grid; place-items: center; font-size: 9.2pt; color: var(--gold-deep); box-shadow: inset 0 0 0 .3mm var(--gold); }
+  .prod-name { font-weight: 500; font-size: 23pt; line-height: 1.35; color: var(--wine); margin-top: 1.5mm; }
+  .prod-latin { font-size: 7.8pt; color: var(--gold-deep); }
+  .prod-figure { position: relative; width: 100%; height: 72mm; margin: 2.5mm 0 3mm; display: grid; place-items: center; }
   .prod-figure::before { content: ""; position: absolute; left: 50%; top: 50%; width: 70mm; height: 70mm; translate: -50% -50%; background: var(--rosette-ink) center / contain no-repeat; opacity: .06; }
-  .prod-figure img { position: relative; max-height: 100%; max-width: 76mm; filter: drop-shadow(0 1.4mm 1.8mm rgba(70, 35, 12, .28)) drop-shadow(0 .3mm .4mm rgba(70, 35, 12, .2)); }
+  .prod-figure img { position: relative; height: 72mm; width: auto; max-width: 82mm; object-fit: contain; filter: drop-shadow(0 1.4mm 1.8mm rgba(70, 35, 12, .28)) drop-shadow(0 .3mm .4mm rgba(70, 35, 12, .2)); }
   .prod-story { font-size: 10.5pt; color: var(--gold-deep); display: flex; justify-content: center; align-items: center; gap: 2mm; margin-bottom: 2mm; }
-  .prod-text { font-size: 8.5pt; line-height: 1.98; text-align: justify; text-align-last: center; color: var(--ink); align-self: start; }
+  .prod-text { font-size: 9.2pt; line-height: 1.98; text-align: justify; text-align-last: center; color: var(--ink); align-self: start; }
   .prod .verse { width: 100%; margin-top: 3mm; }
-  .prod-specs { display: flex; justify-content: center; gap: 2.2mm; align-items: center; margin-top: 3.2mm; font-size: 8pt; color: #6b4a3a; }
+  .prod-specs { display: flex; justify-content: center; gap: 2.2mm; align-items: center; margin-top: 3.2mm; font-size: 8.8pt; color: #6b4a3a; }
   .prod-specs i { width: 1mm; height: 1mm; rotate: 45deg; background: var(--gold); }
 
   /* guides */
-  .guides .sheet::after { content: ""; position: absolute; inset: var(--b); outline: .2mm dashed rgba(0,160,255,.7); pointer-events: none; z-index: 50; }
+  .guides .sheet::after { content: ""; position: absolute; inset: var(--b); outline: .3mm dashed rgba(0,160,255,.7); pointer-events: none; z-index: 50; }
   .fold { display: none; }
   .guides .fold { display: block; position: absolute; top: 0; bottom: 0; width: 0; border-left: .25mm dashed rgba(255,60,120,.8); z-index: 50; }
+  /* ---------- print strength (press check: thin type & hairlines fill in) ---------- */
+  .glyph svg * { stroke-width: 1.55; }
+  .frame .n { stroke-width: 1.2 !important; }
 </style>
 </head>
 <body>
