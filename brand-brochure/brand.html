@@ -159,12 +159,54 @@
   .guides .sheet::after { content: ""; position: absolute; inset: var(--b); outline: .2mm dashed rgba(0,200,255,.8); z-index: 50; }
   .fold { display: none; }
   .guides .fold { display: block; position: absolute; top: 0; bottom: 0; border-left: .25mm dashed rgba(255,80,160,.9); z-index: 50; }
+
+  /* ======== v2 layout: side 1 exclusive · side 2 brand + luxury ======== */
+  .cover-title { font-weight: 500; font-size: 30pt; line-height: 1.35; color: var(--gold-light); }
+  .cover-house2 { font-size: 12.5pt; color: var(--gold); margin-top: 1.5mm; }
+  .cover-body .rule.small { width: 26mm; margin: 5mm 0 4mm; }
+
+  .p-grid .body { position: absolute; inset: calc(var(--b) + 14mm) 10mm calc(var(--b) + 13mm); display: grid; grid-template-rows: auto 1fr auto; justify-items: center; text-align: center; gap: 5mm; }
+  .grid4 { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm 7mm; align-content: center; }
+  .cell { display: grid; justify-items: center; gap: 1.2mm; }
+  .cell .arch { width: 34mm; height: 46mm; }
+  .cell .p-name { font-size: 12.5pt; margin-top: 1mm; }
+  .badge { font-size: 9pt; color: var(--gold-light); padding: 2.2mm 5mm; border: .35mm solid var(--gold-line); outline: .3mm solid rgba(205,174,116,.3); outline-offset: 1mm; }
+
+  .p-ex .body { position: absolute; left: 11mm; right: calc(var(--b) + 11mm); top: calc(var(--b) + 14mm); bottom: calc(var(--b) + 13mm); display: grid; align-content: center; justify-items: center; text-align: center; gap: 4.5mm; }
+  .p-ex .arch { width: 48mm; height: 64mm; }
+  .ex-title { font-weight: 500; font-size: 18pt; line-height: 1.4; color: var(--gold-light); }
+  .ex-text { font-size: 9.4pt; line-height: 1.95; text-align: justify; text-align-last: center; color: var(--pearl); }
+  .p-ex .p-name { font-size: 15pt; }
+  .p-ex .p-text { font-size: 9pt; line-height: 1.85; color: var(--lilac); }
+
+  .p-about .body, .p-lux .body, .p-lux2 .body { position: absolute; top: calc(var(--b) + 14mm); bottom: calc(var(--b) + 13mm); display: grid; align-content: center; justify-items: center; text-align: center; gap: 6mm; }
+  .p-about .body { left: 11mm; right: calc(var(--b) + 11mm); }
+  .p-lux .body { left: 9mm; right: 9mm; }
+  .p-lux2 .body { left: calc(var(--b) + 9mm); right: 9mm; gap: 5mm; }
+  .about-logo { width: 20mm; filter: sepia(.1) saturate(.85); }
+  .about-text { display: grid; gap: 3mm; font-size: 9.6pt; line-height: 2.05; text-align: justify; text-align-last: center; color: var(--pearl); }
+  .lux-pics { display: grid; grid-auto-flow: column; gap: 5mm; }
+  .lux-pics .arch { width: 60mm; height: 82mm; }
+  .lux-pics .arch img { object-position: 50% 60%; }
+  .lux-text { font-size: 9.6pt; line-height: 2; color: var(--pearl); }
+  .lux-list { width: 100%; display: grid; gap: 3.2mm; }
+  .lux-list li { list-style: none; display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 2.5mm; text-align: right; }
+  .lux-list li::before { content: ""; width: 1.6mm; height: 1.6mm; rotate: 45deg; background: var(--gold); translate: 0 -.6mm; }
+  .lux-list b { display: block; font-weight: 500; font-size: 11pt; color: var(--gold-light); }
+  .lux-list span { display: block; font-size: 9pt; color: var(--lilac); line-height: 1.7; }
+  .contact-box { width: 100%; display: grid; grid-template-columns: 1fr auto; gap: 4mm; align-items: center; padding: 4mm; border: .35mm solid var(--gold-line); background: rgba(21, 7, 32, .45); text-align: right; }
+  .contact-box .ct { font-weight: 500; font-size: 11pt; color: var(--gold-light); }
+  .contact-box .ln { font-size: 9pt; line-height: 1.8; color: var(--pearl); }
+  .contact-box .ph { font-size: 10pt; font-weight: 500; color: var(--gold-light); direction: ltr; unicode-bidi: isolate; display: block; text-align: right; }
+  .contact-box .hd { font-size: 9pt; color: var(--lilac); direction: ltr; unicode-bidi: isolate; display: block; text-align: right; }
+  .contact-box .qr-plate { width: 18mm; height: 18mm; }
 </style>
 </head>
 <body>
 
-<!-- OUTSIDE -->
+<!-- ================= SIDE 1 · OUTSIDE · exclusive ================= -->
 <section class="sheet">
+  <!-- front cover -->
   <div class="panel p-cover velvet">
     <div class="grain" data-grain></div>
     <div class="watermark"></div>
@@ -172,92 +214,87 @@
     <div class="cover-body">
       <img class="cover-logo" data-logo alt="نادر">
       <p class="cover-latin latin tracked"><i></i><span data-t="cover.latin"></span><i></i></p>
-      <h1 class="cover-house" data-t="cover.house"></h1>
-      <span class="rule"></span>
+      <p class="cover-house2" data-t="cover.house"></p>
+      <span class="rule small"></span>
+      <h1 class="cover-title" data-t="cover.title"></h1>
       <p class="cover-tag" data-t="cover.tagline"></p>
     </div>
     <p class="cover-city" data-t="cover.city"></p>
   </div>
 
-  <div class="panel p-back velvet">
+  <!-- back: four exclusive pieces -->
+  <div class="panel p-back p-grid velvet">
     <div class="grain" data-grain></div>
     <div class="watermark"></div>
-    <div class="back-body">
-      <div>
-        <img class="back-logo" data-logo alt="">
-        <p class="back-title" data-t="contact.title"></p>
-        <p class="back-note"><span data-t="contact.note"></span> · <span data-t="contact.order"></span></p>
-      </div>
-      <div class="back-info">
-        <span class="rule"></span>
-        <div class="info"><span class="glyph" data-glyph="gate"></span><address class="info-lines" data-lines="contact.address"></address></div>
-        <div class="info"><p class="phones" data-lines="contact.phones"></p></div>
-        <div class="handles">
-          <span><b>Instagram</b>@<span data-t="contact.instagram"></span></span>
-          <span><b>Telegram</b><span data-t="contact.telegram"></span></span>
-        </div>
-        <span class="rule"></span>
-      </div>
-      <div class="back-qr">
-        <p class="qr-cap"><b data-t="contact.qrCaption"></b><bdi dir="ltr">@<span data-t="contact.instagram"></span></bdi></p>
-        <div class="qr-plate"><img src="img/qr-instagram.svg" alt="QR"></div>
-      </div>
+    <div class="body">
+      <p class="eyebrow" data-t="exclusive.gridTitle"></p>
+      <div class="grid4" data-grid></div>
+      <p class="badge" data-t="exclusive.badge"></p>
     </div>
   </div>
 
-  <div class="panel p-flap velvet">
+  <!-- inner flap: exclusive intro + hero -->
+  <div class="panel p-flap p-ex velvet">
     <div class="grain" data-grain></div>
     <div class="watermark"></div>
     <div class="frame" data-frame></div>
-    <div class="flap-body">
+    <div class="body">
       <div>
-        <p class="eyebrow" data-t="about.eyebrow"></p>
-        <h2 class="flap-title" data-t="about.title"></h2>
-        <p class="flap-text" data-t="about.text"></p>
+        <p class="eyebrow" data-t="exclusive.eyebrow"></p>
+        <h2 class="ex-title" data-t="exclusive.title"></h2>
       </div>
-      <div class="pillars" data-pillars></div>
-      <div>
-        <p class="range-title" data-t="about.rangeTitle"></p>
-        <p class="range" data-range></p>
-      </div>
+      <p class="ex-text" data-t="exclusive.text"></p>
+      <div data-hero="0" style="display:grid;justify-items:center;gap:2mm"></div>
     </div>
   </div>
 
   <span class="fold" style="left: 103mm"></span><span class="fold" style="left: 203mm"></span>
 </section>
 
-<!-- INSIDE -->
+<!-- ================= SIDE 2 · INSIDE · brand + luxury ================= -->
 <section class="sheet velvet">
   <div class="grain" data-grain></div>
   <div class="inside-edge" style="top: calc(var(--b) + 5mm)"></div>
   <div class="inside-edge" style="bottom: calc(var(--b) + 5mm)"></div>
 
-  <div class="panel p1">
-    <div class="in-body">
-      <p class="eyebrow" data-t="inside.eyebrow"></p>
-      <h2 class="in-title" data-t="inside.title"></h2>
-      <div class="hero" data-hero="0"></div>
+  <!-- ۱ · about the brand -->
+  <div class="panel p1 p-about">
+    <div class="body">
+      <img class="about-logo" data-logo alt="">
+      <div>
+        <p class="eyebrow" data-t="about.eyebrow"></p>
+        <h2 class="in-title" data-t="about.title"></h2>
+      </div>
+      <div class="about-text" data-paras="about.text"></div>
+      <div class="pillars" data-pillars></div>
     </div>
   </div>
 
-  <div class="panel p2">
-    <div class="in-body pair">
-      <div data-item="1"></div>
-      <span class="rule"></span>
-      <div data-item="2" data-flip></div>
-      <p class="closing" data-t="inside.closing"></p>
+  <!-- ۲ · luxury -->
+  <div class="panel p2 p-lux">
+    <div class="body">
+      <div>
+        <p class="eyebrow" data-t="luxury.eyebrow"></p>
+        <h2 class="in-title" data-t="luxury.title"></h2>
+      </div>
+      <div class="lux-pics" data-luxpics></div>
+      <p class="lux-text" data-t="luxury.text"></p>
     </div>
   </div>
 
-  <div class="panel p3">
-    <div class="in-body pair">
-      <div data-item="3"></div>
-      <span class="rule"></span>
-      <div data-item="4" data-flip></div>
-      <div class="teaser">
-        <p class="eyebrow" data-t="inside.teaserEyebrow"></p>
-        <p class="teaser-title" data-t="inside.teaser"></p>
-        <p class="teaser-sub" data-t="inside.teaserSub"></p>
+  <!-- ۳ · luxury range + contact -->
+  <div class="panel p3 p-lux2">
+    <div class="body">
+      <ul class="lux-list" data-luxlist></ul>
+      <span class="rule" style="width:60%"></span>
+      <div class="contact-box">
+        <div>
+          <p class="ct" data-t="contact.title"></p>
+          <p class="ln" data-lines-inline="contact.address"></p>
+          <span class="ph" data-phones></span>
+          <span class="hd">@<span data-t="contact.instagram"></span> · <span data-t="contact.telegram"></span></span>
+        </div>
+        <div class="qr-plate"><img src="img/qr-instagram.svg" alt="QR"></div>
       </div>
     </div>
   </div>
@@ -275,23 +312,24 @@
   const svgURL = (svg) => `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
   if (location.search.includes("guides")) document.body.classList.add("guides");
 
-  const arch = (p) => `<div class="arch"><div class="ph"><img src="${p.image}" alt="${p.name}"></div></div>`;
+  const arch = (src, alt = "") => `<div class="arch"><div class="ph"><img src="${src}" alt="${alt}"></div></div>`;
+
   $$("[data-hero]").forEach((el) => {
     const p = B.products[+el.dataset.hero];
-    el.innerHTML = `${arch(p)}<div><p class="p-name">${p.name}</p><p class="p-type">${p.type}</p></div><p class="p-text">${p.text}</p>`;
+    el.innerHTML = `${arch(p.image, p.name)}<div><p class="p-name">${p.name}</p><p class="p-type">${p.type}</p></div><p class="p-text">${p.text}</p>`;
   });
-  $$("[data-item]").forEach((el) => {
-    const p = B.products[+el.dataset.item];
-    el.className = "item" + (el.hasAttribute("data-flip") ? " flip" : "");
-    el.innerHTML = `${arch(p)}<div class="txt"><p class="p-name">${p.name}</p><p class="p-type">${p.type}</p><p class="p-text">${p.text}</p></div>`;
+  $$("[data-grid]").forEach((el) => {
+    el.innerHTML = B.products.slice(1).map((p) => `<div class="cell">${arch(p.image, p.name)}<p class="p-name">${p.name}</p><p class="p-type">${p.type}</p></div>`).join("");
   });
+  $$("[data-luxpics]").forEach((el) => { el.innerHTML = B.luxury.images.map((src) => arch(src)).join(""); });
+  $$("[data-luxlist]").forEach((el) => { el.innerHTML = B.luxury.items.map((i) => `<li><div><b>${i.t}</b><span>${i.d}</span></div></li>`).join(""); });
 
   $$("[data-t]").forEach((el) => { el.textContent = get(el.dataset.t); });
-  $$("[data-lines]").forEach((el) => { get(el.dataset.lines).forEach((l) => { const s = document.createElement("span"); s.textContent = l; el.appendChild(s); }); });
+  $$("[data-paras]").forEach((el) => { el.innerHTML = get(el.dataset.paras).map((t) => `<p>${t}</p>`).join(""); });
+  $$("[data-lines-inline]").forEach((el) => { el.textContent = get(el.dataset.linesInline).join("، "); });
+  $$("[data-phones]").forEach((el) => { el.textContent = B.contact.phones.join("   ·   "); });
   $$("[data-pillars]").forEach((el) => { el.innerHTML = B.about.pillars.map((p) => `<div class="pillar"><b>${p.t}</b><span>${p.d}</span></div>`).join(""); });
-  $$("[data-range]").forEach((el) => { el.innerHTML = B.about.range.map((r) => `<span>${r}</span>`).join(""); });
   $$("[data-logo]").forEach((el) => { el.src = "../" + C.assets.logo; });
-  $$("[data-glyph]").forEach((el) => { el.innerHTML = M.glyphs[el.dataset.glyph]; });
   document.documentElement.style.setProperty("--rosette", svgURL(M.doorArt()));
 
   const grain = `<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 800 600">
