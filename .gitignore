@@ -5,3 +5,5 @@ print/*.pdf
 print/preview-*.png
 brochure/*.pdf
 brochure/preview-*.png
+brand-brochure/*.pdf
+brand-brochure/preview-*.png

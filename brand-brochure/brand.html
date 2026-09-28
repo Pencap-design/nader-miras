@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>طلا و جواهر نادر — بروشور معرفی برند</title>
+<!--
+  Brand brochure · royal purple · tri-fold (roll fold) · A4 landscape 297 × 210 mm + 3 mm bleed.
+  Panels (trim, left → right as the sheet lies on the table):
+    OUTSIDE:  front cover 100 | back 100 | inner flap 97
+    INSIDE:   panel ۳ 97      | panel ۲ 100 | panel ۱ 100
+  Copy lives in content.js. Add ?guides to the URL to see trim / fold lines.
+  Print rules baked in: Doran Regular/Medium only, nothing under 8.5 pt, hairlines ≥ 0.3 mm.
+-->
+<style>
+  @font-face { font-family: "Doran"; src: url("../assets/fonts/Doran-Regular.woff2") format("woff2"); font-weight: 400; }
+  @font-face { font-family: "Doran"; src: url("../assets/fonts/Doran-Medium.woff2") format("woff2"); font-weight: 500; }
+  @font-face { font-family: "Cormorant"; src: url("../assets/fonts/Cormorant-Medium-subset.woff2") format("woff2"); font-weight: 500; }
+
+  @page { size: 303mm 216mm; margin: 0; }
+
+  :root {
+    --b: 3mm;
+    --plum-950: #150720;
+    --plum-900: #1d0a2b;
+    --plum-800: #2a1040;
+    --lilac: #cdb8dd;
+    --lilac-dim: #a893bb;
+    --pearl: #f1e9f3;
+    --gold: #cdae74;
+    --gold-light: #e6cf9c;
+    --gold-deep: #a8854e;
+    --gold-line: rgba(205, 174, 116, .7);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  address { font-style: normal; }
+  html, body { background: #555; }
+  body { font-family: "Doran", sans-serif; font-weight: 400; color: var(--pearl); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  @media screen { body { display: grid; gap: 12mm; padding: 12mm; justify-content: center; } }
+
+  .sheet { position: relative; width: 303mm; height: 216mm; overflow: hidden; break-after: page; }
+  .sheet:last-child { break-after: auto; }
+  .panel { position: absolute; top: 0; height: 216mm; overflow: hidden; }
+
+  .velvet { background:
+      radial-gradient(85% 60% at 50% 38%, rgba(120, 60, 160, .35), transparent 70%),
+      radial-gradient(120% 90% at 50% 50%, var(--plum-800) 0%, var(--plum-900) 60%, var(--plum-950) 100%); }
+  .grain { position: absolute; inset: 0; pointer-events: none; }
+  .grain svg { display: block; width: 100%; height: 100%; }
+  .watermark { position: absolute; pointer-events: none; background: var(--rosette) center / contain no-repeat; opacity: .07; }
+
+  .latin { font-family: "Cormorant", serif; font-weight: 500; direction: ltr; letter-spacing: .55em; }
+  .tracked { display: flex; align-items: center; justify-content: center; gap: 3.5mm; }
+  .tracked span { margin-right: -.55em; }
+  .tracked i { display: block; width: 9mm; height: .3mm; background: linear-gradient(90deg, transparent, var(--gold)); }
+  .tracked i:last-child { background: linear-gradient(90deg, var(--gold), transparent); }
+  .rule { position: relative; height: .3mm; background: linear-gradient(90deg, transparent, var(--gold-line), transparent); }
+  .rule::after { content: ""; position: absolute; left: 50%; top: 50%; width: 1.8mm; height: 1.8mm; translate: -50% -50%; rotate: 45deg; border: .3mm solid var(--gold); background: var(--plum-900); }
+  .eyebrow { font-size: 9.5pt; color: var(--gold); }
+  .glyph { display: block; width: 5.5mm; height: 5.5mm; color: var(--gold); }
+  .glyph svg { width: 100%; height: 100%; display: block; }
+  .glyph svg * { stroke-width: 1.6; }
+
+  .frame { position: absolute; pointer-events: none; }
+  .frame svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .frame rect { fill: none; vector-effect: non-scaling-stroke; }
+  .frame .o { stroke: rgba(205, 174, 116, .6); stroke-width: 1.3; }
+  .frame .i { stroke: rgba(205, 174, 116, .28); stroke-width: 1.1; }
+
+  /* Persian arch photo frame */
+  .arch { position: relative; padding: 1.6mm; border: .35mm solid var(--gold-line); border-radius: 999mm 999mm 2mm 2mm; }
+  .arch .ph { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 999mm 999mm 1mm 1mm; background: var(--plum-950); }
+  .arch img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .arch .ph::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 0 6mm rgba(21, 7, 32, .55); }
+
+  /* OUTSIDE · cover */
+  .p-cover { left: 0; width: 103mm; }
+  .p-cover .frame { left: calc(var(--b) + 6mm); right: 6mm; top: calc(var(--b) + 6mm); bottom: calc(var(--b) + 6mm); }
+  .p-cover .watermark { left: calc(var(--b) - 5mm); top: 32mm; width: 110mm; height: 110mm; }
+  .cover-body { position: absolute; left: var(--b); width: 100mm; top: 0; bottom: 0; display: grid; justify-items: center; align-content: center; text-align: center; padding-bottom: 8mm; }
+  .cover-logo { width: 40mm; filter: sepia(.1) saturate(.85) brightness(1.02) drop-shadow(0 .8mm 1.2mm rgba(0,0,0,.5)); }
+  .cover-latin { font-size: 10pt; color: var(--gold-light); margin-top: 6mm; }
+  .cover-house { font-weight: 500; font-size: 21pt; line-height: 1.4; color: var(--gold-light); margin-top: 2.5mm; }
+  .cover-body .rule { width: 34mm; margin: 6mm 0 5mm; }
+  .cover-tag { font-size: 10.5pt; line-height: 1.9; color: var(--lilac); max-width: 70mm; }
+  .cover-city { position: absolute; bottom: calc(var(--b) + 16mm); left: var(--b); width: 100mm; text-align: center; font-size: 9.5pt; color: var(--gold); }
+
+  /* OUTSIDE · back (contact) */
+  .p-back { left: 103mm; width: 100mm; }
+  .p-back .watermark { left: 5mm; top: 50mm; width: 90mm; height: 90mm; opacity: .05; }
+  .back-body { position: absolute; inset: calc(var(--b) + 17mm) 12mm calc(var(--b) + 15mm); display: grid; grid-template-rows: auto 1fr auto; justify-items: center; text-align: center; }
+  .back-logo { width: 15mm; filter: sepia(.1) saturate(.85); }
+  .back-title { font-weight: 500; font-size: 14pt; color: var(--gold-light); margin-top: 3mm; }
+  .back-note { font-size: 9.5pt; color: var(--lilac); margin-top: 1mm; }
+  .back-info { align-self: center; display: grid; gap: 5.5mm; justify-items: center; width: 100%; }
+  .back-info .rule { width: 30mm; }
+  .info { display: grid; justify-items: center; gap: 1.8mm; }
+  .info-lines { font-size: 10pt; line-height: 1.85; color: var(--pearl); }
+  .info-lines span { display: block; }
+  .phones { font-size: 12pt; font-weight: 500; color: var(--gold-light); line-height: 1.7; direction: ltr; unicode-bidi: isolate; }
+  .phones span { display: block; }
+  .handles { display: grid; gap: 1.2mm; font-size: 10pt; direction: ltr; color: var(--pearl); }
+  .handles b { font-weight: 500; color: var(--gold); margin-right: 1.5mm; }
+  .back-qr { display: grid; grid-template-columns: auto auto; align-items: center; gap: 3.5mm; }
+  .qr-plate { width: 19mm; height: 19mm; padding: 1.6mm; background: var(--pearl); box-shadow: 0 0 0 .3mm var(--gold), 0 0 0 1mm var(--plum-900), 0 0 0 1.3mm rgba(205,174,116,.55); }
+  .qr-plate img { width: 100%; height: 100%; display: block; }
+  .qr-cap { font-size: 9pt; line-height: 1.8; color: var(--lilac); text-align: right; }
+  .qr-cap b { display: block; font-weight: 500; font-size: 9.5pt; color: var(--gold-light); }
+
+  /* OUTSIDE · inner flap (about) */
+  .p-flap { left: 203mm; width: 100mm; }
+  .p-flap .frame { left: 6mm; right: calc(var(--b) + 6mm); top: calc(var(--b) + 6mm); bottom: calc(var(--b) + 6mm); }
+  .p-flap .watermark { left: 8mm; top: 18mm; width: 80mm; height: 80mm; opacity: .05; }
+  .flap-body { position: absolute; left: 13mm; right: calc(var(--b) + 13mm); top: calc(var(--b) + 16mm); bottom: calc(var(--b) + 14mm); display: grid; align-content: center; gap: 8mm; text-align: center; justify-items: center; }
+  .flap-title { font-weight: 500; font-size: 20pt; line-height: 1.4; color: var(--gold-light); margin-top: 1mm; }
+  .flap-text { font-size: 9.6pt; line-height: 2.05; text-align: justify; text-align-last: center; color: var(--pearl); margin-top: 3.5mm; }
+  .pillars { width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+  .pillar { display: grid; justify-items: center; align-content: start; gap: 1.6mm; padding-top: 3mm; border-top: .3mm solid var(--gold-line); }
+  .pillar b { font-weight: 500; font-size: 11pt; color: var(--gold-light); }
+  .pillar span { font-size: 8.6pt; line-height: 1.75; color: var(--lilac); }
+  .range-title { font-size: 9.5pt; color: var(--gold); margin-bottom: 2.5mm; }
+  .range { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.8mm 2.2mm; font-size: 9pt; color: var(--pearl); }
+  .range span { display: inline-flex; align-items: center; gap: 2.2mm; }
+  .range span:not(:last-child)::after { content: ""; width: 1.2mm; height: 1.2mm; rotate: 45deg; background: var(--gold); }
+
+  /* INSIDE */
+  .p1 { left: 200mm; width: 103mm; }
+  .p2 { left: 100mm; width: 100mm; }
+  .p3 { left: 0; width: 100mm; }
+  .in-body { position: absolute; top: calc(var(--b) + 13mm); bottom: calc(var(--b) + 13mm); display: grid; }
+  .p1 .in-body { left: 9mm; right: calc(var(--b) + 9mm); }
+  .p2 .in-body { left: 8mm; right: 8mm; }
+  .p3 .in-body { left: calc(var(--b) + 8mm); right: 9mm; }
+  .inside-edge { position: absolute; left: 0; right: 0; height: .5mm; background: linear-gradient(90deg, var(--gold-deep), var(--gold-light) 50%, var(--gold-deep)); }
+
+  .p1 .in-body { grid-template-rows: auto auto 1fr; justify-items: center; text-align: center; }
+  .in-title { font-weight: 500; font-size: 17pt; line-height: 1.4; color: var(--gold-light); margin-top: 1mm; }
+  .hero { display: grid; justify-items: center; align-content: center; gap: 3mm; }
+  .hero .arch { width: 60mm; height: 82mm; margin-top: 5mm; }
+  .p-name { font-weight: 500; font-size: 17pt; line-height: 1.3; color: var(--gold-light); }
+  .p-type { font-size: 9pt; color: var(--lilac-dim); }
+  .p-text { font-size: 9.3pt; line-height: 1.95; color: var(--pearl); text-align: justify; text-align-last: center; }
+
+  .pair { grid-template-rows: 1fr auto 1fr auto; align-items: center; }
+  .item { display: grid; grid-template-columns: 38mm 1fr; gap: 5mm; align-items: center; }
+  .item.flip { grid-template-columns: 1fr 38mm; }
+  .item.flip .arch { order: 2; }
+  .item .arch { width: 38mm; height: 52mm; }
+  .item .txt { display: grid; gap: 1.5mm; text-align: right; }
+  .item .p-name { font-size: 15pt; }
+  .item .p-text { text-align: right; text-align-last: right; font-size: 9.1pt; line-height: 1.9; }
+  .pair > .rule { width: 60%; justify-self: center; }
+
+  .closing { justify-self: center; text-align: center; font-size: 9pt; color: var(--lilac); padding-top: 3mm; }
+  .teaser { justify-self: stretch; text-align: center; padding: 4.5mm 4mm; border: .35mm solid var(--gold-line); outline: .3mm solid rgba(205,174,116,.3); outline-offset: 1.2mm; background: rgba(21, 7, 32, .45); }
+  .teaser .eyebrow { font-size: 9pt; }
+  .teaser-title { font-weight: 500; font-size: 14pt; color: var(--gold-light); line-height: 1.5; }
+  .teaser-sub { font-size: 9pt; color: var(--lilac); }
+
+  .guides .sheet::after { content: ""; position: absolute; inset: var(--b); outline: .2mm dashed rgba(0,200,255,.8); z-index: 50; }
+  .fold { display: none; }
+  .guides .fold { display: block; position: absolute; top: 0; bottom: 0; border-left: .25mm dashed rgba(255,80,160,.9); z-index: 50; }
+</style>
+</head>
+<body>
+
+<!-- OUTSIDE -->
+<section class="sheet">
+  <div class="panel p-cover velvet">
+    <div class="grain" data-grain></div>
+    <div class="watermark"></div>
+    <div class="frame" data-frame></div>
+    <div class="cover-body">
+      <img class="cover-logo" data-logo alt="نادر">
+      <p class="cover-latin latin tracked"><i></i><span data-t="cover.latin"></span><i></i></p>
+      <h1 class="cover-house" data-t="cover.house"></h1>
+      <span class="rule"></span>
+      <p class="cover-tag" data-t="cover.tagline"></p>
+    </div>
+    <p class="cover-city" data-t="cover.city"></p>
+  </div>
+
+  <div class="panel p-back velvet">
+    <div class="grain" data-grain></div>
+    <div class="watermark"></div>
+    <div class="back-body">
+      <div>
+        <img class="back-logo" data-logo alt="">
+        <p class="back-title" data-t="contact.title"></p>
+        <p class="back-note"><span data-t="contact.note"></span> · <span data-t="contact.order"></span></p>
+      </div>
+      <div class="back-info">
+        <span class="rule"></span>
+        <div class="info"><span class="glyph" data-glyph="gate"></span><address class="info-lines" data-lines="contact.address"></address></div>
+        <div class="info"><p class="phones" data-lines="contact.phones"></p></div>
+        <div class="handles">
+          <span><b>Instagram</b>@<span data-t="contact.instagram"></span></span>
+          <span><b>Telegram</b><span data-t="contact.telegram"></span></span>
+        </div>
+        <span class="rule"></span>
+      </div>
+      <div class="back-qr">
+        <p class="qr-cap"><b data-t="contact.qrCaption"></b><bdi dir="ltr">@<span data-t="contact.instagram"></span></bdi></p>
+        <div class="qr-plate"><img src="img/qr-instagram.svg" alt="QR"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel p-flap velvet">
+    <div class="grain" data-grain></div>
+    <div class="watermark"></div>
+    <div class="frame" data-frame></div>
+    <div class="flap-body">
+      <div>
+        <p class="eyebrow" data-t="about.eyebrow"></p>
+        <h2 class="flap-title" data-t="about.title"></h2>
+        <p class="flap-text" data-t="about.text"></p>
+      </div>
+      <div class="pillars" data-pillars></div>
+      <div>
+        <p class="range-title" data-t="about.rangeTitle"></p>
+        <p class="range" data-range></p>
+      </div>
+    </div>
+  </div>
+
+  <span class="fold" style="left: 103mm"></span><span class="fold" style="left: 203mm"></span>
+</section>
+
+<!-- INSIDE -->
+<section class="sheet velvet">
+  <div class="grain" data-grain></div>
+  <div class="inside-edge" style="top: calc(var(--b) + 5mm)"></div>
+  <div class="inside-edge" style="bottom: calc(var(--b) + 5mm)"></div>
+
+  <div class="panel p1">
+    <div class="in-body">
+      <p class="eyebrow" data-t="inside.eyebrow"></p>
+      <h2 class="in-title" data-t="inside.title"></h2>
+      <div class="hero" data-hero="0"></div>
+    </div>
+  </div>
+
+  <div class="panel p2">
+    <div class="in-body pair">
+      <div data-item="1"></div>
+      <span class="rule"></span>
+      <div data-item="2" data-flip></div>
+      <p class="closing" data-t="inside.closing"></p>
+    </div>
+  </div>
+
+  <div class="panel p3">
+    <div class="in-body pair">
+      <div data-item="3"></div>
+      <span class="rule"></span>
+      <div data-item="4" data-flip></div>
+      <div class="teaser">
+        <p class="eyebrow" data-t="inside.teaserEyebrow"></p>
+        <p class="teaser-title" data-t="inside.teaser"></p>
+        <p class="teaser-sub" data-t="inside.teaserSub"></p>
+      </div>
+    </div>
+  </div>
+
+  <span class="fold" style="left: 100mm"></span><span class="fold" style="left: 200mm"></span>
+</section>
+
+<script src="../js/config.js"></script>
+<script src="../js/motifs.js"></script>
+<script src="content.js"></script>
+<script>
+  const C = window.NADER_CONFIG, M = window.NADER_MOTIFS, B = window.BRAND;
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const get = (p) => p.split(".").reduce((a, k) => a && a[k], B);
+  const svgURL = (svg) => `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
+  if (location.search.includes("guides")) document.body.classList.add("guides");
+
+  const arch = (p) => `<div class="arch"><div class="ph"><img src="${p.image}" alt="${p.name}"></div></div>`;
+  $$("[data-hero]").forEach((el) => {
+    const p = B.products[+el.dataset.hero];
+    el.innerHTML = `${arch(p)}<div><p class="p-name">${p.name}</p><p class="p-type">${p.type}</p></div><p class="p-text">${p.text}</p>`;
+  });
+  $$("[data-item]").forEach((el) => {
+    const p = B.products[+el.dataset.item];
+    el.className = "item" + (el.hasAttribute("data-flip") ? " flip" : "");
+    el.innerHTML = `${arch(p)}<div class="txt"><p class="p-name">${p.name}</p><p class="p-type">${p.type}</p><p class="p-text">${p.text}</p></div>`;
+  });
+
+  $$("[data-t]").forEach((el) => { el.textContent = get(el.dataset.t); });
+  $$("[data-lines]").forEach((el) => { get(el.dataset.lines).forEach((l) => { const s = document.createElement("span"); s.textContent = l; el.appendChild(s); }); });
+  $$("[data-pillars]").forEach((el) => { el.innerHTML = B.about.pillars.map((p) => `<div class="pillar"><b>${p.t}</b><span>${p.d}</span></div>`).join(""); });
+  $$("[data-range]").forEach((el) => { el.innerHTML = B.about.range.map((r) => `<span>${r}</span>`).join(""); });
+  $$("[data-logo]").forEach((el) => { el.src = "../" + C.assets.logo; });
+  $$("[data-glyph]").forEach((el) => { el.innerHTML = M.glyphs[el.dataset.glyph]; });
+  document.documentElement.style.setProperty("--rosette", svgURL(M.doorArt()));
+
+  const grain = `<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 800 600">
+    <filter id="g"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="5"/>
+    <feColorMatrix values="0 0 0 0 .08  0 0 0 0 .02  0 0 0 0 .12  0 0 0 .45 0"/></filter>
+    <rect width="800" height="600" filter="url(#g)"/>
+    <filter id="m"><feTurbulence type="fractalNoise" baseFrequency=".01" numOctaves="4" seed="9"/>
+    <feColorMatrix values="0 0 0 0 .05  0 0 0 0 0  0 0 0 0 .08  0 0 0 .5 0"/></filter>
+    <rect width="800" height="600" filter="url(#m)"/></svg>`;
+  $$("[data-grain]").forEach((el) => { el.innerHTML = grain; });
+
+  $$("[data-frame]").forEach((el) => {
+    const { width: w, height: h } = el.getBoundingClientRect(); const i = 6;
+    el.innerHTML = `<svg viewBox="0 0 ${w} ${h}"><rect class="o" x="0" y="0" width="${w}" height="${h}"/><rect class="i" x="${i}" y="${i}" width="${w - 2 * i}" height="${h - 2 * i}"/></svg>`;
+  });
+</script>
+</body>
+</html>
