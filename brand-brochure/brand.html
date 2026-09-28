@@ -182,11 +182,20 @@
   .p-about .body, .p-lux .body, .p-lux2 .body { position: absolute; top: calc(var(--b) + 14mm); bottom: calc(var(--b) + 13mm); display: grid; align-content: center; justify-items: center; text-align: center; gap: 6mm; }
   .p-about .body { left: 11mm; right: calc(var(--b) + 11mm); }
   .p-lux .body { left: 9mm; right: 9mm; }
-  .p-lux2 .body { left: calc(var(--b) + 9mm); right: 9mm; gap: 5mm; }
+  .p-lux2 .body { left: calc(var(--b) + 9mm); right: 9mm; gap: 4.5mm; }
   .about-logo { width: 20mm; filter: sepia(.1) saturate(.85); }
   .about-text { display: grid; gap: 3mm; font-size: 9.6pt; line-height: 2.05; text-align: justify; text-align-last: center; color: var(--pearl); }
   .lux-pics { display: grid; grid-auto-flow: column; gap: 5mm; }
-  .lux-pics .arch { width: 60mm; height: 82mm; }
+  .lux-pics .arch { width: 48mm; height: 64mm; }
+  .lux-names { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 2.6mm 4mm; text-align: right; }
+  .lux-names li { list-style: none; display: flex; align-items: center; gap: 2.2mm; font-size: 9.6pt; color: var(--gold-light); }
+  .lux-names li::before { content: ""; flex: none; width: 1.5mm; height: 1.5mm; rotate: 45deg; background: var(--gold); }
+  .ingots { width: 62mm; height: 30mm; }
+  .ingots svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .bullion-list { width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5mm; }
+  .bullion-list li { list-style: none; display: grid; gap: 1mm; justify-items: center; text-align: center; padding-top: 2.6mm; border-top: .3mm solid var(--gold-line); }
+  .bullion-list b { font-weight: 500; font-size: 10.5pt; color: var(--gold-light); }
+  .bullion-list span { font-size: 8.8pt; line-height: 1.7; color: var(--lilac); }
   .lux-pics .arch img { object-position: 50% 60%; }
   .lux-text { font-size: 9.6pt; line-height: 2; color: var(--pearl); }
   .lux-list { width: 100%; display: grid; gap: 3.2mm; }
@@ -279,20 +288,26 @@
       </div>
       <div class="lux-pics" data-luxpics></div>
       <p class="lux-text" data-t="luxury.text"></p>
+      <ul class="lux-names" data-luxnames></ul>
     </div>
   </div>
 
-  <!-- ۳ · luxury range + contact -->
+  <!-- ۳ · melted gold & silver + contact -->
   <div class="panel p3 p-lux2">
     <div class="body">
-      <ul class="lux-list" data-luxlist></ul>
-      <span class="rule" style="width:60%"></span>
+      <div>
+        <p class="eyebrow" data-t="bullion.eyebrow"></p>
+        <h2 class="in-title" data-t="bullion.title"></h2>
+      </div>
+      <div class="ingots" data-ingots></div>
+      <p class="lux-text" data-t="bullion.text"></p>
+      <ul class="bullion-list" data-bullion></ul>
       <div class="contact-box">
         <div>
           <p class="ct" data-t="contact.title"></p>
           <p class="ln" data-lines-inline="contact.address"></p>
           <span class="ph" data-phones></span>
-          <span class="hd">@<span data-t="contact.instagram"></span> · <span data-t="contact.telegram"></span></span>
+          <span class="hd">@<span data-t="contact.instagram"></span>  |  <span data-t="contact.telegram"></span></span>
         </div>
         <div class="qr-plate"><img src="img/qr-instagram.svg" alt="QR"></div>
       </div>
@@ -322,12 +337,36 @@
     el.innerHTML = B.products.slice(1).map((p) => `<div class="cell">${arch(p.image, p.name)}<p class="p-name">${p.name}</p><p class="p-type">${p.type}</p></div>`).join("");
   });
   $$("[data-luxpics]").forEach((el) => { el.innerHTML = B.luxury.images.map((src) => arch(src)).join(""); });
+  $$("[data-luxnames]").forEach((el) => { el.innerHTML = B.luxury.items.map((i) => `<li>${i.t}</li>`).join(""); });
+  $$("[data-bullion]").forEach((el) => { el.innerHTML = B.bullion.items.map((i) => `<li><b>${i.t}</b><span>${i.d}</span></li>`).join(""); });
+  // two gold bars and a silver bar, drawn as engraved ingots
+  const ingot = (x, y, w, h, top, side, face, edge, label) => `
+    <g transform="translate(${x} ${y})">
+      <path d="M0 ${h} L${w * .1} ${h * .28} L${w * .9} ${h * .28} L${w} ${h} Z" fill="${face}" stroke="${edge}" stroke-width=".6"/>
+      <path d="M${w * .1} ${h * .28} L${w * .18} 0 L${w * .82} 0 L${w * .9} ${h * .28} Z" fill="${top}" stroke="${edge}" stroke-width=".6"/>
+      <path d="M${w * .26} ${h * .07} H${w * .74}" stroke="${edge}" stroke-width=".5" opacity=".6"/>
+      <text x="${w / 2}" y="${h * .72}" text-anchor="middle" font-family="Doran" font-weight="500" font-size="${h * .26}" fill="${edge}" opacity=".85">${label}</text>
+    </g>`;
+  $$("[data-ingots]").forEach((el) => {
+    el.innerHTML = `<svg viewBox="0 0 124 60">
+      <defs>
+        <linearGradient id="gf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0dca8"/><stop offset=".5" stop-color="#cfae6c"/><stop offset="1" stop-color="#9c7a42"/></linearGradient>
+        <linearGradient id="gt" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e8d098"/><stop offset=".5" stop-color="#fff0c8"/><stop offset="1" stop-color="#d9bb7c"/></linearGradient>
+        <linearGradient id="sf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f2f6"/><stop offset=".5" stop-color="#c9c4cf"/><stop offset="1" stop-color="#8f8a97"/></linearGradient>
+        <linearGradient id="st" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#dcd8e0"/><stop offset=".5" stop-color="#ffffff"/><stop offset="1" stop-color="#cfcad6"/></linearGradient>
+      </defs>
+      <ellipse cx="62" cy="57" rx="58" ry="3" fill="#000" opacity=".35"/>
+      ${ingot(6, 28, 56, 28, "url(#st)", "", "url(#sf)", "#6d6776", "نقره")}
+      ${ingot(62, 28, 56, 28, "url(#gt)", "", "url(#gf)", "#7a5a2c", "طلا")}
+      ${ingot(34, 2, 56, 28, "url(#gt)", "", "url(#gf)", "#7a5a2c", "نادر")}
+    </svg>`;
+  });
   $$("[data-luxlist]").forEach((el) => { el.innerHTML = B.luxury.items.map((i) => `<li><div><b>${i.t}</b><span>${i.d}</span></div></li>`).join(""); });
 
   $$("[data-t]").forEach((el) => { el.textContent = get(el.dataset.t); });
   $$("[data-paras]").forEach((el) => { el.innerHTML = get(el.dataset.paras).map((t) => `<p>${t}</p>`).join(""); });
   $$("[data-lines-inline]").forEach((el) => { el.textContent = get(el.dataset.linesInline).join("، "); });
-  $$("[data-phones]").forEach((el) => { el.textContent = B.contact.phones.join("   ·   "); });
+  $$("[data-phones]").forEach((el) => { el.innerHTML = B.contact.phones.map((n) => `<span style="display:block">${n}</span>`).join(""); });
   $$("[data-pillars]").forEach((el) => { el.innerHTML = B.about.pillars.map((p) => `<div class="pillar"><b>${p.t}</b><span>${p.d}</span></div>`).join(""); });
   $$("[data-logo]").forEach((el) => { el.src = "../" + C.assets.logo; });
   document.documentElement.style.setProperty("--rosette", svgURL(M.doorArt()));
