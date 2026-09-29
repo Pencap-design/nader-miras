@@ -42,7 +42,7 @@ window.NADER_CONFIG = {
     // Leave empty to show an in-page acknowledgement only (nothing is sent).
     rsvp: "",
     // Replace with a pinned Neshan / Balad / Google Maps share link for the venue.
-    map: "https://maps.app.goo.gl/poPnUVUzShFB88489"
+    map: "https://www.google.com/maps/search/?api=1&query=JFRJ%2BQW7%20Shiraz"
   },
 
   assets: {
